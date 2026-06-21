@@ -10,14 +10,14 @@ redirect_from:
 
 <div class="lang-en" markdown="1">
 
-Hi! I am Liya Su (苏莉娅), an AI Security R&D Expert at Chaitin Technology, focusing on key technologies and applications of LLM/AI in cybersecurity.
-Previously I worked as a Security Algorithm Engineer at JD Cloud Security Team.
-I received my Ph.D. in Cyberspace Security from the Institute of Information Engineering, Chinese Academy of Sciences in 2021.
-My research interests include complex malicious behavior analysis in large-scale networks and AI security, leveraging behavioral analysis, machine learning, and graph neural networks to analyze emerging attacks.
+Hi, I'm Liya Su (苏莉娅) — currently working as an AI Security R&D Expert at Chaitin Technology, where I explore how LLMs and AI can be applied to cybersecurity (and how to keep them safe in the process).
+
+Before this, I was a Security Algorithm Engineer at JD Cloud. I got my Ph.D. in Cyberspace Security from the Institute of Information Engineering, Chinese Academy of Sciences in 2021. My work sits at the intersection of AI and security — think malicious behavior analysis, graph neural networks, and figuring out creative ways attackers break things.
 
 ---
 
 ## What's New
+
 * 2025: 1st Place in Tencent Cloud AI Agent CTF Competition (China's first AI autonomous penetration challenge).
 * 2025: 1st Place in Beijing CAC AI Content Security Protection Competition.
 * 2025: Joined Chaitin Technology as AI Security R&D Expert, Oct 2025.
@@ -74,14 +74,14 @@ Year | Institute | Major | Degree
 
 <div class="lang-zh" markdown="1">
 
-你好！我是苏莉娅，目前就职于长亭科技，担任AI安全研发专家，负责大模型AI技术在网络安全领域的关键技术和落地应用的探索。
-此前在京东云安全产品研发部担任安全算法工程师。
-2021年在中国科学院信息工程研究所获得网络空间安全博士学位。
-研究兴趣包括大型网络中的复杂恶意行为分析和人工智能算法本身的安全问题，借助行为分析、机器学习和图神经网络方法，分析测量新型攻击活动。
+Hi，我是苏莉娅 — 目前在长亭科技担任AI安全研发专家，主要探索大模型和AI技术在网络安全领域怎么用（以及怎么不被人搞）。
+
+来长亭之前，我在京东云安全做安全算法工程师。2021年在中科院信工所拿了网络空间安全的博士学位。日常研究方向是AI与安全的交叉地带 — 恶意行为分析、图神经网络、以及研究攻击者那些花式操作。
 
 ---
 
 ## 最新动态
+
 * 2025年：腾讯云AI智能体CTF夺旗比赛（国内首个AI智能渗透挑战赛）第一名。
 * 2025年：北京网信办AI内容安全防护比赛第一名。
 * 2025年10月：加入长亭科技，担任AI安全研发专家。
