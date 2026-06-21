@@ -35,4 +35,46 @@
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
+<style>
+.lang-zh { display: none; }
+body.zh .lang-en { display: none !important; }
+body.zh .lang-zh { display: block !important; }
+.lang-switch {
+  cursor: pointer;
+  padding: 2px 8px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  font-size: 0.75em;
+  margin-left: 10px;
+  background: transparent;
+  color: inherit;
+  vertical-align: middle;
+}
+.lang-switch:hover { background: #f0f0f0; }
+</style>
+<script>
+(function() {
+  var lang = localStorage.getItem('site-lang') || 'en';
+  if (lang === 'zh') document.body.classList.add('zh');
+  window.toggleLang = function() {
+    var isZh = document.body.classList.toggle('zh');
+    localStorage.setItem('site-lang', isZh ? 'zh' : 'en');
+    var btn = document.getElementById('lang-btn');
+    if (btn) btn.textContent = isZh ? 'EN' : '中文';
+    document.querySelectorAll('[data-zh]').forEach(function(el) {
+      el.textContent = isZh ? el.getAttribute('data-zh') : el.getAttribute('data-en');
+    });
+  };
+  document.addEventListener('DOMContentLoaded', function() {
+    if (lang === 'zh') {
+      var btn = document.getElementById('lang-btn');
+      if (btn) btn.textContent = 'EN';
+      document.querySelectorAll('[data-zh]').forEach(function(el) {
+        el.textContent = el.getAttribute('data-zh');
+      });
+    }
+  });
+})();
+</script>
+
 <!-- end custom head snippets -->

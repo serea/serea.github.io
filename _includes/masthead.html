@@ -13,9 +13,10 @@
               {% else %}
               {% assign domain = base_path %}
             {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}" data-en="{{ link.title }}" data-zh="{{ link.title_zh }}">{{ link.title }}</a></li>
           {% endfor %}
         </ul>
+        <button id="lang-btn" class="lang-switch" onclick="toggleLang()">中文</button>
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
