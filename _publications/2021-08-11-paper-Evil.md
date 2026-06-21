@@ -1,6 +1,6 @@
 ---
 title: "Evil Under the Sun: Understanding and Discovering Attacks on Ethereum Decentralized Applications"
-collection: publicationsd
+collection: publications
 permalink: /publication/2021-08-11-paper-Evil
 date: 2021-08-11
 venue: 'USENIX Security'

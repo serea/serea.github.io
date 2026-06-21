@@ -80,14 +80,14 @@ google_analytics:
 
 # Site Author
 author:
-  name             : "Suliya's happyness life"
+  name             : "Suliya"
   avatar           : "sly.jpg"
-  bio              : "An analysis engineer in JD.COM.Inc."
+  bio              : "Security Algorithm Engineer at JD Cloud"
   location         : "Beijing, China"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "https://scholar.google.com/citations?user=1ebmfU4AAAAJ&hl=zh-CN"
-  email            :
+  email            : "sereat@163.com"
   researchgate     : "https://www.researchgate.net/profile/Liya-Su-3"
   uri              :
   bitbucket        :
@@ -96,13 +96,13 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "https://github.com/serea/"
+  github           : "serea"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "https://www.linkedin.com/in/suliya-suliya-827671207/"
+  linkedin         : "suliya-suliya-827671207"
   orcid            : #"http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
