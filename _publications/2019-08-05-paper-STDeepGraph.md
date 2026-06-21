@@ -1,6 +1,6 @@
 ---
 title: "STDeepGraph: Spatial-Temporal Deep Learning on Communication Graphs for Long-Term Network Attack Detection"
-collection: publicationsd
+collection: publications
 permalink: /publication/2019-08-05-paper-STDeepGraph
 date: 2019-08-05
 venue: 'TrustCom/BigDataSE IEEE'

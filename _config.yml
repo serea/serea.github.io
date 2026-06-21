@@ -82,7 +82,7 @@ google_analytics:
 author:
   name             : "Suliya"
   avatar           : "sly.jpg"
-  bio              : "Security Algorithm Engineer at JD Cloud"
+  bio              : "AI Security R&D Expert at Chaitin Technology"
   location         : "Beijing, China"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
@@ -171,7 +171,6 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
-  parse_block_html: true
 
 
 # Collections
