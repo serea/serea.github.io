@@ -10,7 +10,7 @@ redirect_from:
 
 <div class="lang-en" markdown="1">
 
-Hi, I'm Liya Su (苏莉娅) — currently working as an AI Security R&D Expert at Chaitin Technology, where I explore how LLMs and AI can be applied to cybersecurity (and how to keep them safe in the process).
+Hi, I'm Suliya (苏莉娅) — currently working as an AI Security R&D Expert at Chaitin Technology, where I explore how LLMs and AI can be applied to cybersecurity (and how to keep them safe in the process).
 
 Before this, I was a Security Algorithm Engineer at JD Cloud. I got my Ph.D. in Cyberspace Security from the Institute of Information Engineering, Chinese Academy of Sciences in 2021. My work sits at the intersection of AI and security — think malicious behavior analysis, graph neural networks, and figuring out creative ways attackers break things.
 
