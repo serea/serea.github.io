@@ -1,5 +1,6 @@
 ---
 title: 'Protecting User Privacy: Untraceable Web Browsing History and Unambiguous User Profiles'
+title_zh: '保护用户隐私：不可追踪的网页浏览记录与明确的用户画像'
 date: 2019-03-1
 permalink: /posts/2019/03/protectuserprivacy/
 tags:

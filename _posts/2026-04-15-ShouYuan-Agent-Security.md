@@ -1,5 +1,6 @@
 ---
 title: 'AI Agent 风潮已至，长亭「守元」破解企业"不敢用"困境'
+title_en: 'AI Agent Wave: Chaitin ShouYuan Solves Enterprise Security Concerns'
 date: 2026-04-15
 permalink: /posts/2026/04/shouyuan-agent-security/
 tags:

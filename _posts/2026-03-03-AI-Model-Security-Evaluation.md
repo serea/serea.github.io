@@ -1,5 +1,6 @@
 ---
 title: '网安红队实测：2026 马年 AI 开年王炸模型安全测评'
+title_en: 'AI Model Security Evaluation: 2026 Year of the Horse Red-Team Testing'
 date: 2026-03-03
 permalink: /posts/2026/03/ai-model-security-evaluation/
 tags:

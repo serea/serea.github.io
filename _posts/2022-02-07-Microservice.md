@@ -1,5 +1,6 @@
 ---
 title: 'Google Cloud-Native Microservice Architecture'
+title_zh: 'Google 云原生微服务架构'
 date: 2022-02-07
 permalink: /posts/2022/02/Microservice/
 tags:

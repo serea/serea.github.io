@@ -1,5 +1,6 @@
 ---
 title: 'Ph.D. Job Interview Summary'
+title_zh: '博士求职面试总结'
 date: 2021-05-21
 permalink: /posts/2021/05/phdinterview/
 tags:

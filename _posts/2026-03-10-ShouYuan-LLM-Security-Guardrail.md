@@ -1,5 +1,6 @@
 ---
 title: '为OpenClaw们装上智能安全锁，长亭发布"守元"大模型安全围栏'
+title_en: 'ShouYuan LLM Security Guardrail: Smart Safety Locks for OpenClaw Agents'
 date: 2026-03-10
 permalink: /posts/2026/03/shouyuan-llm-security-guardrail/
 tags:

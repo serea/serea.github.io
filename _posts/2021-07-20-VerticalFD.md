@@ -1,5 +1,6 @@
 ---
 title: 'Vertical Federated Learning in Finance'
+title_zh: '金融领域的纵向联邦学习'
 date: 2021-07-20
 permalink: /posts/2021/07/verticalfd/
 tags:

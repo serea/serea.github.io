@@ -7,9 +7,16 @@
 {% endif %}
 
 {% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+  {% assign raw_title = post.title %}
+  {% assign title_en = post.title_en | default: raw_title %}
+  {% assign title_zh = post.title_zh | default: raw_title %}
+  {% assign title = raw_title | markdownify | remove: "<p>" | remove: "</p>" %}
+  {% assign title_en = title_en | markdownify | remove: "<p>" | remove: "</p>" %}
+  {% assign title_zh = title_zh | markdownify | remove: "<p>" | remove: "</p>" %}
 {% else %}
   {% assign title = post.title %}
+  {% assign title_en = post.title_en | default: post.title %}
+  {% assign title_zh = post.title_zh | default: post.title %}
 {% endif %}
 
 <div class="{{ include.type | default: "list" }}__item">
@@ -28,9 +35,9 @@
 
     <h2 class="archive__item-title" itemprop="headline">
       {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+        <a href="{{ post.link }}"><span class="lang-en">{{ title_en }}</span><span class="lang-zh">{{ title_zh }}</span></a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink"><span class="lang-en">{{ title_en }}</span><span class="lang-zh">{{ title_zh }}</span></a>
       {% endif %}
     </h2>
     
