@@ -1,82 +1,86 @@
 ---
-title: '校招面试总结'
+title: 'Ph.D. Job Interview Summary'
 date: 2021-05-21
 permalink: /posts/2021/05/phdinterview/
 tags:
-  - 面试
-  - 博士
+  - Interview
+  - PhD
 ---
 
+<div class="lang-en" markdown="1">
 
-持续了近半年的找工作，主要关注做安全和互联网的大厂，最终拿到了自己非常满意的offer，希望通过此面经能帮到优秀的你！
+After nearly half a year of job hunting, I interviewed at 9 companies targeting security and major tech firms, received 5 offers (>50% success rate), and landed a very satisfying position. Here's my experience to help others!
 
-***拿到的offer情况***
+### Offers Overview
 
-一共面试了9个公司，拿到了5个offer，成功率大于50%。
+| Company | Role | Result | Rounds |
+|---------|------|--------|--------|
+| Sangfor | Security Researcher | Final round, no follow-up after salary discussion | Written+2 |
+| Ant Financial | Security Algorithm | Couldn't convert from intern to full-time application | 0 |
+| Meituan | Security | Failed (couldn't solve attack/defense problems) | Written+1 |
+| Tencent Xuanwu | Security | Failed (focus mismatch — they wanted vuln hunting) | 1 |
+| QiAnXin | Security Researcher | SP offer | Written+2 |
+| 360 | Security Researcher | "Algorithm Star" SSP offer | Written+3 |
+| ByteDance | Security Researcher | Offer, Level 2-1 | Written+3 |
+| JD.com | Doctor Management Trainee | DMT offer | Written+4 |
+| Huawei | Security Researcher | Level 17 offer | Written+3 |
 
+### Self-Introduction Tips
 
+**Highlight your strengths:**
+- Emphasize school reputation and visiting researcher experience to show research is at the frontier
+- Organize publications by research direction, highlight the most recent/best results
+- When describing research projects: start with the attack scenario/motivation, then explain your innovation and effectiveness
+- Mention engineering projects with concrete metrics (project level, code volume, deployment results)
 
-|   公司   | 岗位       | 面试结果                                                     | 面试次数           |
-| :------: | ---------- | ------------------------------------------------------------ | ------------------ |
-|  深信服  | 安全研究员 | 面试最后一轮，了解了我其他offer的薪资就没下文了              | 笔试+2面试         |
-| 蚂蚁金服 | 安全算法岗 | “崩”网投实习岗后没办法投校招岗，客服一直不给解决问题。年底麻烦拿到offer的师兄帮忙问问后，感兴趣的部门已经没有校招名额了。 | 0      |
-|   美团   | 安全岗     | 杯具，面试的很多攻防题没做出来。                             | 笔试+1面试         |
-| 腾讯玄武 | 安全岗     | 杯具，更多的关注漏洞挖掘方向不符                             | 1面试              |
-|  奇安信  | 安全研究员 | 拿到sp offer                                                 | 笔试+2面试         |
-|   360    | 安全研究员 | 拿到“算法之星” ssp offer                                     | 笔试+2+1算法之星面 |
-| 字节跳动  | 安全研究员 | 拿到安全部门算法组的offer，职级2-1                   | 笔试+3面试         |
-|   京东   | 博士管培生 | 拿到博士管培生                                               | 笔试+4面试         |
-|   华为   | 安全研究员 | 17级offer                                  | 笔试+3面试         |
+### Technical Interview Tips
 
+1. For unknown questions: explain your thought process step by step — interviewers will give hints rather than expect silence
+2. For algorithm roles: LeetCode prep is essential, plus deep understanding of ML/DL principles (not just usage, but design and tuning)
+3. For security roles: focus on medium-difficulty data structure problems, plus cryptography, network protocols, and common attack/defense techniques
 
+### Resume Tips
 
-### 面试的自我陈述内容
+1. **Highlight key work first!** Put important content at the top.
+2. Use concrete numbers to describe achievements.
 
-**重点目标是突出自己的优势。**
+</div>
 
-个人简介部分，我就重点介绍了自己的学校以及两段访学经历，突出自己的研究在整个领域的前沿程度。
+<div class="lang-zh" markdown="1">
 
-论文发表部分是作为博士研究中的重点产出，根据个人研究方向分类，最好突出最近、成果最好的研究项目。
+持续了近半年的找工作，主要关注做安全和互联网的大厂，最终拿到了自己非常满意的offer。一共面试了9个公司，拿到了5个offer，成功率大于50%。
 
-介绍研究项目时，我首先会强调一个可能的攻击场景或者实际存在的攻击行为，从研究背景和研究意义出发让面试者有个大致的认识。然后具体围绕解决方案，讲出自己的创新点，突出研究方法的有效性。当然，最好是能在落地的项目中有实践，突出下具体的部署和实践效果。
+### Offer情况
 
-如果博士期间有工程项目，最好也介绍下。首先突出具体项目的级别（“985”，“重研”，“青年基金”等），说明自己的工作负责哪一部分。对于自己负责的部分可以从申请项目的准备，项目实施过程中承担的角色，是否有带领其他学生的角色，代码撰写量的多少，以及最后项目验收时达到的效果等。
+| 公司 | 岗位 | 面试结果 | 面试次数 |
+|:----:|------|----------|----------|
+| 深信服 | 安全研究员 | 面试最后一轮，了解了我其他offer的薪资就没下文了 | 笔试+2面试 |
+| 蚂蚁金服 | 安全算法岗 | 网投实习岗后没办法投校招岗 | 0 |
+| 美团 | 安全岗 | 杯具，面试的很多攻防题没做出来 | 笔试+1面试 |
+| 腾讯玄武 | 安全岗 | 杯具，方向不符 | 1面试 |
+| 奇安信 | 安全研究员 | 拿到sp offer | 笔试+2面试 |
+| 360 | 安全研究员 | 拿到"算法之星" ssp offer | 笔试+3面 |
+| 字节跳动 | 安全研究员 | 拿到安全部门算法组offer，职级2-1 | 笔试+3面试 |
+| 京东 | 博士管培生 | 拿到博士管培生 | 笔试+4面试 |
+| 华为 | 安全研究员 | 17级offer | 笔试+3面试 |
 
-工程项目在于能够全程参与并最好担任部分工作的领导带头任务。同时，工程项目的内容一般与公司的实际工作最相似，可能也是公司正在做的内容，因此要讲的工程一定要足够了解和清晰，不要反倒被问倒。
+### 面试自我陈述
 
-最后如果有出色的竞赛经历，获奖经历，个人博客等可以再描述下，学生会社团经历简单的讲一讲就好。
+**重点突出自己的优势：**
+- 强调学校以及访学经历，突出研究前沿程度
+- 论文按方向分类，突出最近最好的成果
+- 介绍项目时：先讲攻击场景/研究意义，再讲创新点和有效性
+- 工程项目突出具体部署和实践效果
 
+### 技术问答
 
+1. 遇到不会的问题：按思考思路讲解，面试官会给提示
+2. 算法岗：做好LeetCode，掌握ML/DL原理（会用+会设计调参）
+3. 安全岗：中等难度数据结构题+密码学、网络协议、攻防基本知识
 
-### 面试陈述内容问答
+### 简历撰写
 
-1. 简历有的内容一定要清晰，能够讲明白。
+1. **突出重点！**先写重点工作内容
+2. 用数字描述成果
 
-2. 简历中突出的工作要做好前沿调查，看看是否有更新的发展。
-
-3. 论文的级别，工程项目级别与具体的工作量最好定量化的描述，用具体的数字说明自己的工作，不要仅用文字表达。
-
-   
-
-### 面试的技术问答
-
-1. 如果遇到自己不会的问题，可以按照自己的思考思路出发，一点点的讲解自己的想法，这个时候面试官也会尝试给你一些提示，而不是完全放弃回答。
-
-2. 如果是算法岗，做好leetcode的刷题工作，一般公司会从里面出题，见过的题一定要做好，并讲清楚思路。同时，作为博士，对于机器学习深度学习原理的掌握是基本要求，除了会用，要清楚每种模块的作用，如何设计和调参等等，特别是对于在论文中使用的模型。
-
-3. 如果是安全岗，有余力的做好刷题工作，考察重点在于数组列表等简单中等难度的题上，除了leetcode刷题外，更要增加安全领域知识，包括密码学，网络协议，网络攻防的基本知识，对于常见的攻防原理手法要清晰。
-
-   
-
-### 个人简历撰写tips
-
-1. 突出重点！突出重点！突出重点！先写重点工作内容。
-
-2. 整体清晰简明，用数字描述自己工作的成果。
-
-
-### 面试着装与谈吐小技巧：
-
-面试前通过释放型动作放松心态增强自信
-
-穿着舒适合理配饰增加自信
+</div>

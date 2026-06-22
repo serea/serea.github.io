@@ -1,87 +1,83 @@
 ---
-title: 'Google云原生微服务架构'
+title: 'Google Cloud-Native Microservice Architecture'
 date: 2022-02-07
 permalink: /posts/2022/02/Microservice/
 tags:
-  - 云原生
+  - Cloud Native
 ---
 
+<div class="lang-en" markdown="1">
 
+### Cloud Native & Microservices
 
-### 云原生？微服务？
-云原生作为一种新型的云基础架构，云原生计算基金会（CNCF）致力于培养和维护开源生态系统，并推广云原生技术。
+Cloud native, as championed by CNCF, includes key technologies: **containers, service meshes, microservices, immutable infrastructure, and declarative APIs**. Microservices decompose application tasks into independently developed, managed services — each with its own API, release cycle, scaling, and quota management. They are **independent, modular, dynamic, and ephemeral**.
 
-云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括**容器、服务网格、微服务、不可变基础设施和声明式API**。
-这些技术能够构建容错性好、易于管理和便于观察的松耦合系统。结合可靠的自动化手段，云原生技术使工程师能够轻松地对系统作出频繁和可预测的重大变更。
+### Cloud-Native Security
 
-其中微服务将应用需要执行的各个任务分离成单独的服务，每项服务都可独立进行开发和管理，并且具有自己的API、发布、扩缩和配额管理。
-微服务是**独立的、模块化的、动态的、短暂的**。它们可以分布在许多主机、集群甚至云端上。
+Google's cloud-native security system **BeyondProd** shifts from traditional perimeter-based security (trusting users based on network context like IP/hostname) to service-based trust through code provenance and service identity verification.
 
-![image-center]({{ './images/posts/microservice/cloudnaive.jpg' | absolute_url }}){: .align-center}
+Key changes from traditional security:
+1. **Network layer**: From perimeter security (WAF) to zero-trust — all services are untrusted, authentication is service-based
+2. **Application**: From monolithic security policies to cross-service consistent enforcement with individual microservice updates
+3. **Hardware**: From VMs/physical machines to workload isolation where different services share the operating system
+
+### Cloud-Native Security vs. Zero Trust
+
+Zero trust focuses on user identity verification with encryption for user-level security management. Cloud-native security emphasizes microservice-level boundary security with different trust levels and controls. Identity is based on services, not IP addresses.
+
+### BeyondProd Components
+
+1. **Edge network protection** → Google Front End (GFE)
+2. **No inherent inter-service trust** → Application Layer Transport Security (ALTS)
+3. **Known-provenance code execution** → Binary Authorization for Borg (BAB), Host Integrity (HINT)
+4. **Cross-service policy enforcement** → Service Access Policy, End User Context tickets (EUC)
+5. **Simple, automated, standardized releases** → Borg tooling
+6. **Workload isolation on shared OS** → gVisor
+
+Key products:
+- **GFE**: TLS termination, edge proxy
+- **ALTS**: RPC authentication, integrity, encryption
+- **BAB**: Code review, binary verification
+- **HINT**: Secure boot, digital signature verification on BIOS/BMC/bootloader/kernel
+- **EUC**: Integrity-protected, centrally-issued, forwardable credentials
+- **gVisor**: User-space kernel intercepting syscalls, reducing host interaction
+
+</div>
+
+<div class="lang-zh" markdown="1">
+
+### 云原生与微服务
+
+云原生技术由CNCF推广，代表技术包括**容器、服务网格、微服务、不可变基础设施和声明式API**。微服务将应用任务分离成单独服务，每项服务独立开发管理，具有自己的API、发布、扩缩和配额管理。微服务是**独立的、模块化的、动态的、短暂的**。
 
 ### 云原生安全
 
-云原生安全则强调在云原生系统架构设计之初就提出了安全框架。Google云原生安全系统BeyondProd旨在提供更简单的管理、可扩展性功能。
+Google云原生安全系统**BeyondProd**从传统的边界安全（基于IP/主机名信任用户）转向对服务的信任，通过代码出处和服务身份认证实现。
 
-传统的边界安全服务基于用户信任，根据上下文网络状态（IP、主机名）判断信任设备。随着公司网络权限的开放，越来越多的用户不在生产网络中使用服务，使得基于边界的安全服务不再可信。
+三方面变化：
+1. **网络层**：从边界安全(WAF)转向零信任——所有服务间无信任，基于服务认证
+2. **应用**：从整体更新转向跨服务一致安全策略，可频繁更新个别微服务
+3. **硬件**：从虚拟机/物理机转向封装工作负载的隔离机制，不同应用共享操作系统
 
-因此云原生安全架构提出对服务的信任，通过对代码出处和服务身份的认证实现对服务的信任。
-服务可以部署在公有云、私有云和第三方托管，用户也可以从不同的网络环境中使用服务。
+### 云原生安全与零信任
 
-使用微服务架构的容器化基础架构，能做到在开发和部署生命周期中尽早解决问题。
-借助**服务网格**将安全功能和服务实现标准化和一致化。
-进而保证开发者在开发过程中对安全的关注更少，花费时间更短，系统更安全。
+零信任针对用户身份验证，借助加密实现用户级安全管理。云原生安全强调微服务级细分的边界安全，身份基于服务而非IP地址。
 
-BeyongdProd主要包括六个部分：
-- 互相进行身份验证的服务端点
-- 保证传输安全性
-- 全局负载平衡控制
-- 在边缘终止拒绝服务攻击
-- 端到端的代码出处校验
-- 运行时沙盒隔离
+### BeyondProd六大安全组件
 
-云原生安全提出了三个方面要求变化：
-1. 网络层：从传统的边界安全（WAF）仅关注特定IP、服务认证转向零信任安全，所有服务间无信任，实现基于服务的认证，授信已知出处的代码。
+1. **边缘网络保护** → Google Front End (GFE)
+2. **服务间无固有信任** → Application Layer Transport Security (ALTS)
+3. **已知出处代码执行** → Binary Authorization for Borg (BAB)、Host Integrity (HINT)
+4. **跨服务策略执行** → Service Access Policy、End User Context tickets (EUC)
+5. **简单自动化标准化发布** → Borg tooling
+6. **共享OS上的工作负载隔离** → gVisor
 
-2. 应用：应用使用独立的安全策略，应用更新需要整体更新转向跨服务强制一致安全，可以频繁更新个别微服务。
+核心产品：
+- **GFE**：TLS终止，边缘代理
+- **ALTS**：RPC认证、完整性、加密
+- **BAB**：代码审计，二进制验证
+- **HINT**：安全启动，BIOS/BMC/bootloader/内核数字签名验证
+- **EUC**：完整性保护的集中签发可转发凭证
+- **gVisor**：用户空间内核拦截系统调用，减少与主机交互
 
-3. 硬件：从传统的部署在虚拟机或物理机转向通过隔离机制中封装工作负载，不同的应用服务可以共享操作系统。
-
-### 云原生安全与零信任安全模型
-   
-对比零信任安全模型，云原生安全模型有不少相似性。
-零信任安全模型针对用户身份验证，借助加密场景实现用户级的安全管理；云原生安全强调微服务级细分的边界安全，针对不同信任级别和控制措施。
-云原生安全身份基于服务，不再基于IP地址和主机名。
-
-云服务安全可实现一致性安全策略，将安全政策拆分成单独的微服务，可重用组件实现一致的安全策略，包括用户访问以及TLS加密等组件。
-
-### 云原生产品
-
-Google云原生安全架构实现包括6个方面的安全原则：
-1. 在边缘保护网络。对应的产品：Google Front End（GFE）。
-2. 服务之间没有固有的相互信任。对应的产品：Application Layer Transport Security（ALTS）。
-3. 运行具有已知出处代码的机器。对应的产品：Binary Authorization for Borg（BAB）代码审计，Host Integrity（HINT）机器认证。
-4. 用于跨服务强制执行一致政策的关卡。对应的产品：Service Access Policy，End User Context tickets（EUC）。
-5. 简单、自动化、标准化的更新发布。对应的产品：Brog tooling。
-6. 在共享操作系统的工作负载之间进行隔离。对应的产品：gVisor。
-
-使用的安全产品主要说明：
-> GFE：Terminates TLS (Transport Layer Security), edge proxy.
-
-> ALTS: Remote Procedure Call (RPC), RPC authentication, integrity, encryption.
-
-> Identities Features: seamless microservice replication, load balancing, rescheduling across hosts. Identities are in general bound to services, not hosts or server name.
-
-> BAB: code review, binaries verifiably.
-
-> HINT: secure boot process, verification of digital signatures(host system software) on BIOS, BMC, bootloader and OS kernel.
-
-> Service Access Policy: authentication, authorization, auditing policies.
-
-> EUC tickes: integrity protected, centrally-issued, forwardable credentials.
-
-> Brog tooling for blue/green deployments: migrating running workloads when performing maintenance tasks.
-
-> Live migration: changes affecting Google Cloud infrastructure VM workloads are not impacted.
-
-> gVisor: workload isolation. Use user space kernel to intercept and handle syscalls, reducing the interaction with the host.
+</div>

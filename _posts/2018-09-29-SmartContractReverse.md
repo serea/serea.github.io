@@ -1,5 +1,5 @@
 ---
-title: "区块链论文解读———未知智能合约的逆向"
+title: '区块链论文解读———未知智能合约的逆向'
 date: 2018-09-29
 permalink: /posts/2018/09/smartcontractreverse/
 tags:
@@ -7,87 +7,87 @@ tags:
   - Reverse
 ---
 
+<div class="lang-en" markdown="1">
+
+This is a paper reading note on "Erays: Reverse Engineering Ethereum's Opaque Smart Contracts" published at USENIX Security 2018 by the University of Illinois Urbana-Champaign.
+
+Smart contracts only need to execute bytecode and can keep their source code unknown — this poses significant challenges for analysis. The paper proposes a reverse engineering tool for EVM bytecode that produces higher-level representations suitable for manual analysis.
+
+* Author: Liya Su, Ph.D. candidate at IIE, CAS. Research area: Cyberspace Security and Big Data.
+* Paper: [Erays: Reverse Engineering Ethereum's Opaque Smart Contracts](https://www.usenix.org/conference/usenixsecurity18/presentation/zhou)
+* Authors: Yi Zhou, Deepak Kumar, Surya Bakshi, Joshua Mason, Andrew Miller, Michael Bailey
+
+## Introduction
+
+Smart contracts are programs that facilitate traceable, irreversible digital transactions. In 2018, Ethereum smart contracts held over $10 billion and facilitated crowdfunding, decentralized exchanges, and supply chain tracking. However, many contracts lack publicly available source code, making auditing extremely difficult.
+
+## Key Contributions
+
+1. **Erays** — a reverse engineering tool that takes compiled EVM bytecode and returns high-level pseudocode suitable for manual analysis, converting from stack-based to register-based representation
+2. Measurement of the Ethereum smart contract ecosystem (code complexity and code reuse)
+3. "Fuzzy hashing" mechanism to link opaque contracts to publicly available source code
+4. Four case studies: high-value multisig wallets, arbitrage bots, exchange accounts, and CryptoKitties
+
+## System Design
+
+1. **Disassembly & Basic Block Identification**: Disassemble hex strings into EVM instructions, partition into basic blocks
+2. **Control Flow Graph Recovery**: Model stack states through CFG, handling three cases — sequential flow, termination instructions, and branch instructions (JUMP/JUMPI)
+3. **Lifting**: Convert stack-based instructions to register-based
+4. **Optimization**: Constant folding, constant propagation, copy propagation, dead code elimination
+5. **Aggregation**: Combine definitions with their uses for more compact output
+6. **Validation**: 15,855 historical transactions tested; 3.22% failure rate (196 construction failures, 314 validation failures)
+
+## Experiments
+
+On 34K unique contracts: median block count is 100, median instructions per block is 15. 79% of contracts contain no function with McCabe complexity >10. Code reuse analysis shows the most popular function implementations appear in 11K contracts. Using Erays on the top-10 highest-balance opaque contracts, 66% of functions were successfully matched on average, with one contract achieving 100% match (holding 488K ETH ≈ $500M in 2018).
+
+## Case Studies
+
+- **High-value multisig wallets**: Reverse-engineered access control revealing 2-of-3 admin signature requirements
+- **Arbitrage bots**: Discovered batch-trading contracts for synchronized EtherDelta trades
+- **CryptoKitties**: Fully reconstructed the `mixGenes` function in 3 hours, identifying gene selection probabilities and mutation mechanics
+
+</div>
+
+<div class="lang-zh" markdown="1">
 
 本文是伊利诺伊大学香槟分校发表于USENIX 2018 的工作，文章提出了一种在逆向分析以太坊上智能合约代码的模型。
 
-
-智能合约只需要执行代码，可以保持源代码未知给智能合约分析带来了巨大的挑战。文正解决了智能合约领域中因源代码未知带来的分析困难的问题，完成了前所未有的工作。文章使用逆向分析技术，给出智能合约执行代码的更高级别表示以满足人工分析的需求。本文解决了智能合约领域的全新问题，完成了前所未有的工作。文章从智能合约的可公开访问的操作代码中提取代码，可以在造成任何损害之前检测智能合约中的庞氏骗局并建立基于它的风险预警平台。
+智能合约只需要执行代码，可以保持源代码未知给智能合约分析带来了巨大的挑战。文章使用逆向分析技术，给出智能合约执行代码的更高级别表示以满足人工分析的需求。
 
 * 关于编辑作者：苏莉娅，中国科学院信工所博士，研究方向为网络空间安全与大数据。
 * 论文原文: Erays: Reverse Engineering Ethereum's Opaque Smart Contracts
-* 论文下载链接:  [paper-download](https://www.usenix.org/conference/usenixsecurity18/presentation/zhou)
-* 论文作者:  Yi Zhou / Deepak Kumar / Surya Bakshi / Joshua Mason / Andrew Miller / Michael Bailey
-
-
+* 论文下载链接: [paper-download](https://www.usenix.org/conference/usenixsecurity18/presentation/zhou)
+* 论文作者: Yi Zhou / Deepak Kumar / Surya Bakshi / Joshua Mason / Andrew Miller / Michael Bailey
 
 ## 引言
 
-智能合约是促进可跟踪，不可逆转的数字交易的程序。智能合约在第二大加密货币以太坊中占据突出地位。在2018年，以太坊智能合约持有超过100亿美元，可用于促进各种任务，例如众筹，分散交换和供应链跟踪。
+智能合约是促进可跟踪、不可逆转的数字交易的程序。2018年以太坊智能合约持有超过100亿美元。但许多智能合约没有可用的公共源代码，使得审计工作非常困难。
 
-但是，历史上智能合约很容易出现错误，并且与智能合约交互存在潜在的高财务风险。 因此，智能合约引起了多家监管机构的关注，包括美国联邦贸易委员会和美国证券交易委员会，它们有意审计这些合同以防止意外的财务后果。许多智能合约都没有可用的可链接的公共源代码，这使得审计工作非常困难。
+## 主要贡献
 
-本文的创新点与贡献主要有：
-1）为了更好地理解不透明的智能合约，我们提出了Erays，以太坊智能合约逆向工程工具。 Erays将编译后的以太坊虚拟机（EVM）智能合约作为输入，并返回适合手动分析的高级伪代码。值得注意的是，我们将EVM从基于堆栈的语言转换为基于寄存器的机器，以便于最终用户的输出可读性。
-2）测量以太坊智能合约生态系统。利用Erays以太坊代码复杂性和代码重用做深入了解。
-3) 利用Erays演示如何将没有现成源代码的智能合约链接到公开可用的源代码。构建了一个"模糊散列"机制，可以比较两个智能合约，并确定是否具有函数类似的句法结构。 
-4）展示Erays如何作为一个逆向工程工具应用于四个案例研究 - 高价值多重签名钱包，套利机器人，交换账户，最后，一个流行的智能合约游戏，Cryptokitties。
-5) 讨论了审计，逆向工程的价值，以及Erays可以帮助解决以太坊社区不断增长的地方。我们希望Erays对安全和加密货币社区有用，以应对未来的挑战。
+1. **Erays**：将编译后的EVM智能合约作为输入，返回适合手动分析的高级伪代码，将基于堆栈的语言转换为基于寄存器的表示
+2. 测量以太坊智能合约生态系统（代码复杂性和代码重用）
+3. "模糊散列"机制，将不透明合约链接到公开源代码
+4. 四个案例研究：高价值多重签名钱包、套利机器人、交换账户、CryptoKitties
 
+## 系统设计
 
-## 模型
-
-System Design：
-
-1. Disassembly and Basic Block Identification拆卸和基本块识别: 将十六进制字符串反汇编为EVM指令，然后将这些指令分区为基本块。基本块是具有单个入口点和单个出口点的线性代码序列。
-
-2. Control Flow Graph Recovery恢复控制流图，在CFG恢复算法中对堆栈状态进行建模。该算法遵循CFG恢复的传统模式：我们分析一个基本块，识别它的后继，添加它们到CFG，然后递归分析后继者。使用此堆栈模型，我们通过CFG有效地模拟，触发所有可访问的代码块。在到达的每个块入口处，我们将当前堆栈图像与迄今为止观察到的堆栈图像进行比较。如果已经记录了堆栈图像，则该块将继续到已经探索过的路径，因此CFG会回溯。
-有三种情况：
-1）不改变控制流程的指令
-2）停止执行的指令（STOP，REVERT，INVALID，RETURN，SELFDESTRUCT）
-3）分支指令（JUMP，JUMPI）
-在第一种情况下，控制只是流向序列中的下一个块，使该块成为b的后继块。在第二种情况下，由于执行终止，b将没有后继。在后一种情况下，后继依赖于分支指令的目标地址，这需要更仔细的审查。
-
-3. Lifting提升: 将基于堆栈的指令转变为基于寄存器的指令
-
-4. Optimization优化：将几个编译器优化应用于中间表示。主要利用数据流优化，包括常量折叠，常量传播，复制传播和死代码消除。
-
-5. Aggregation聚合：与死代码消除相结合，聚合过程将定义他们的用法,产生一个更紧凑的输出。
-
-6. Validation: 我们利用区块链上的历史交易来构建一组测试。总计，我们收集了约15,855笔交易以及相应的合约作为我们的测试集。我们注意到这只是所有独特合约46％，其余的从未发生过交易。
-如果Erays无法生成表示，我们将其标记为"构造失败"。如果我们的表示形式不正确，我们将其标记为"验证失败"。总计我们失败510个样本占测试集的3.22％，其中196个是"构造失败"，314个是"验证失败"。
-
-![image-center]({{ '/images/recipes/erays/image2.png' | absolute_url }}){: .align-center}
-
+1. **反汇编和基本块识别**：将十六进制字符串反汇编为EVM指令，分区为基本块
+2. **恢复控制流图**：对堆栈状态建模，处理三种情况——顺序流、终止指令、分支指令(JUMP/JUMPI)
+3. **提升**：将基于堆栈的指令转变为基于寄存器的指令
+4. **优化**：常量折叠、常量传播、复制传播、死代码消除
+5. **聚合**：将定义与用法组合，产生更紧凑的输出
+6. **验证**：测试15,855笔历史交易；失败率3.22%
 
 ## 实验
 
-在以下几个方便使用Erays对以太坊智能合约进行分析：代码复杂性；代码重用性，并进一步展示Erays如何减少智能合约中的模糊化。
+在34K唯一合约上：中位数块数100，中位数指令数15。79%的合约不包含McCabe复杂度>10的函数。代码重用分析显示最流行的函数实现出现在11K个合约中。对余额最高的10个不透明合约使用Erays，平均成功匹配66%的功能，其中一个合约实现100%匹配（持有488K ETH ≈ 2018年5亿美元）。
 
-实验数据：以太坊区块链上的34K唯一的智能合约；为其中445个唯一二进制代码绘制了CFGs用来分析。
+## 案例研究
 
-Code Complexity: 调查以太坊合约中的区块数量，发现大多数合约都相当小。合约的块数中位数为100，这些块的指令数量中位数为15条。然而，有长度分布有长尾。在最大的情况下，一份合同总共包含13,045个区块。
-我们发现79％的唯一合约不包含复杂度（函数CDF McCabe分数）大于10的单个函数，这表明除了小，许多契约之外不包含不必要的复杂功能。我们还观察到复杂合同的长尾，在最坏的情况下，少数合同包含过于复杂的功能。
+- **高价值多重签名钱包**：逆向工程揭示2-of-3管理员签名要求
+- **套利机器人**：发现EtherDelta同步批量交易合约
+- **CryptoKitties**：3小时内完全重建`mixGenes`函数，识别基因选择概率和突变机制
 
-![image-center]({{ '/images/recipes/erays/image3.png' | absolute_url }}){: .align-center}
-![image-center]({{ '/images/recipes/erays/image4.png' | absolute_url }}){: .align-center}
-![image-center]({{ '/images/recipes/erays/image5.png' | absolute_url }}){: .align-center}
-
-Code Reuse: 将Erays结果放到哈希集做映射，称为函数"implementation"。我们发现许多合同中都有一些共同的implementation。最后可以看出最流行的功能仅在11K大小的合约中。
-![image-center]({{ '/images/recipes/erays/image6.png' | absolute_url }}){: .align-center}
-研究合同中包含的流行外部函数，以及每个函数的实现数量。如前所述，每个外部函数都通过可靠性契约中的4字节签名来识别。表2显示了数据集中找到的前10个函数签名。注意到所有顶级函数都与ERC20规范相关。
-
-Reducing Contract Opacity: 表3显示了排名前十的余额最高的合约。其中最大的合约持有737K Eth。在这些合同中，有五个不能直接映射到经过验证的源代码。在应用Erays之后，我们能够成功地发现每个合同中平均66％的功能，并且对于其中一个合约，完全匹配100％的功能。该合同总共持有488K Eth，其在2018年的价值为5亿美元。
-![image-center]({{ '/images/recipes/erays/image7.png' | absolute_url }}){: .align-center}
-
-
-## Case Study：
-
- * 高价值钱包的权限控制策略：许多高价值钱包都是多重签名钱包，需要多个人批准任何交易--标准的加密货币安全措施。截至2018年2月，余额最大的不透明钱包包含5.97亿美元，使用Etherscan进行分析，观察到该合约每周都来自同一账户，0xd244 ......，属于Gemini，一个大型加密货币交易所。此地址访问我们数据集中的另外两个高价值，不透明的钱包，余额分别为381万美元和1.64亿美元。我们使用Erays对这些合同进行逆向工程，并发现其访问控制策略。我们发现前两个合同几乎相同。为了从钱包中取钱，他们需要三个管理员签名中的两个。任何人都可以调用requestWithdrawal方法，但是，在调用approveWithdrawal函数两次，并且至少有一个调用消息由另一个管理员签名，合同才会释放资金。到目前为止，批准撤销交易是从与管理员不同的地址发起的。
- * 套利机器人：按交易量计算，EtherDelta是最大智能合约交易所，在撰写本文时每日交易量超过700万美元。发现在EtherDelta上出现套利机会，同时买卖两种货币的代币可以立即获利。这种机会是短暂的，因此套利者需要尽可能快地利用有利的交易。成功的套利需要进行一对（或更多）同步交易。为了降低风险，许多套利者已经建立了通过EtherDelta发送批量交易的以太坊智能合约。我们使用Erays对这些合同进行逆向工程并调查其内部工作。
- * 反模糊Dapp游戏Cryptokitties：作者使用Erays进行3小时的逆向工程工作，创建一个Solidity合约，其输出与区块链上mixGenes函数的输出完全匹配。我们发现mixGenes函数由三个主要部分组成。第一个选择将使用的随机性：如果输入块编号的哈希值为0，则使用当前块编号对其进行掩码。新的块编号及其散列与父代的基因连接，作为keccak256散列函数的输入，其输出用作其余执行的随机源。其次，每个亲本的基因被分成5个比特段并混合。对于每个5位基因，选择一个亲本基因作为输出基因，概率为50％。最后，如果两个亲本的相应基因中的较大者小于23，则特定基因以25％的概率突变，否则具有12.5％的概率突变。与我们逆向工作同时，至少还有其他三个团队也尝试对mixGenes函数进行逆向工程。他们主要利用事务跟踪和区块链分析来反向设计合同的"协议"。Erays不依赖于事务数据，它直接将字节码转换为高级伪代码。因此，可以准确地复制未出现在事务跟踪中的不常见或未使用的控制路径，例如Cryptokitties突变。
-使用Erays重建合同的逻辑和控制流程，我们确定了更有效的利用游戏的两个机会。首先，可以识别具有23或更高基因的小猫，这些基因在繁殖时不太可能遇到随机突变。其次，由于在调用giveBirth时基于块哈希选择随机性，我们可以等待提交giveBirth事务，直到块哈希导致有利的繁殖。
-
-
-## 总结
-
-为了只有执行代码的智能合约，我们介绍了Erays，一种用于EVM的逆向工程工具。Erays将EVM字节码提升为适合手动分析的更高级别的表示。首先展示了如何使用Erays来量化代码复杂性，识别代码重用以及降低智能合约生态系统中的不透明度。然后，将Erays应用于四个逆向工程案例研究：高价值多重签名钱包，套利机器人，交换账户，最后是一个流行的智能合约游戏。
+</div>
