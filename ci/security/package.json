@@ -1,0 +1,11 @@
+{
+  "name": "serea-security-checks",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check": "retire --path ../../assets/js --severity high",
+    "audit": "npm audit --audit-level=high"
+  },
+  "devDependencies": { "retire": "6.1.0" }
+}
