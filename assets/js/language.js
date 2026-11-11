@@ -40,12 +40,13 @@
   }
 
   applyLanguage(preferredLanguage(), false);
+  document.addEventListener('click', function (event) {
+    if (event.target.closest && event.target.closest('#lang-btn')) {
+      applyLanguage(language === 'zh' ? 'en' : 'zh', true);
+    }
+  });
   document.addEventListener('DOMContentLoaded', function () {
     applyLanguage(language, false);
-    var button = document.getElementById('lang-btn');
-    if (button) button.addEventListener('click', function () {
-      applyLanguage(language === 'zh' ? 'en' : 'zh', true);
-    });
   });
   window.addEventListener('pageshow', function () { applyLanguage(preferredLanguage(), false); });
   window.addEventListener('popstate', function () { applyLanguage(preferredLanguage(), false); });

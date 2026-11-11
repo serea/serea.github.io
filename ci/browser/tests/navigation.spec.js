@@ -72,6 +72,26 @@ test('language and navigation still work when storage is unavailable', async ({ 
   await language(page, 'en');
 });
 
+test('button works before a slow footer script finishes loading', async ({ page }) => {
+  let release;
+  const gate = new Promise(resolve => { release = resolve; });
+  await page.route('**/assets/js/main.min.js*', async route => {
+    await gate;
+    await route.continue();
+  });
+  try {
+    await page.goto('/', { waitUntil: 'commit' });
+    await expect(page.locator('#lang-btn')).toBeVisible();
+    expect(await page.evaluate(() => document.readyState)).toBe('loading');
+    await page.locator('#lang-btn').click();
+    await language(page, 'zh', true);
+  } finally {
+    release();
+  }
+  await page.waitForLoadState('load');
+  await language(page, 'zh', true);
+});
+
 test('all primary navigation tabs open and language button stays visible', async ({ page }) => {
   await page.goto('/');
   const paths = await page.locator('#site-nav a[data-en]').evaluateAll(links => links.map(link => new URL(link.href).pathname));
