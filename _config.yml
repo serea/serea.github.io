@@ -123,6 +123,8 @@ include:
   - _pages
   - files
 exclude:
+  - AGENTS.md
+  - scripts
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

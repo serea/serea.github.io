@@ -21,7 +21,6 @@ Before this, I was a Security Algorithm Engineer at JD Cloud. I got my Ph.D. in 
 * 2026: Third Prize in the Science and Technology Progress category of the CCF Science and Technology Achievement Awards, for “Research and Application of Key Technologies for Web Application Protection Based on Intelligent Semantic Analysis.”
 * 2026: 1st Place in AI Agent Malicious Operation Behavior Detection at the AI Technology-Empowered Cybersecurity Application Testing Event.
 * 2026: Second Prize in the China Cybersecurity Innovation and Entrepreneurship Competition, for the Chaitin ShouYuan AI Security Protection Solution.
-
 * 2025: 1st Place in Tencent Cloud AI Agent CTF Competition (China's first AI autonomous penetration challenge).
 * 2025: 1st Place in Beijing CAC AI Content Security Protection Competition.
 * 2025: Joined Chaitin Technology as AI Security R&D Expert, Oct 2025.
@@ -47,17 +46,22 @@ Before this, I was a Security Algorithm Engineer at JD Cloud. I got my Ph.D. in 
 
 ## Selected Publications
 
-1. **Liya Su**, Xinyue Shen, Xiangyu Du, Xiaojing Liao, XiaoFeng Wang, Luyi Xing, Baoxu Liu. **Evil Under the Sun: Understanding and Discovering Attacks on Ethereum Decentralized Applications**. USENIX Security 2021. **(CCF-A)** [paper](https://www.usenix.org/conference/usenixsecurity21/presentation/su)
-2. Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, **Liya Su**, XiaoFeng Wang, Haixu Tang. **The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks**. arXiv 2023. [paper](https://arxiv.org/abs/2311.16189)
-3. **Liya Su**, Yepeng Yao, Chen Zhang, Zhigang Lu, Baoxu Liu. **Marrying Graph Kernel with Deep Neural Network: A Case Study for Network Anomaly Detection**. ICCS 2019: 102-115.
-4. **Liya Su**, Yepeng Yao, Zhigang Lu, Baoxu Liu. **Understanding the Influence of Graph Kernels on Deep Learning Architecture**. TrustCom 2019: 312-318. **(CCF-C)**
-5. **Liya Su**, Yepeng Yao, Ning Li, Junrong Liu, Zhigang Lu, Baoxu Liu. **Hierarchical Clustering Based Network Traffic Data Reduction for Improving Suspicious Flow Detection**. TrustCom 2018: 744-753. **(CCF-C)**
+1. Yuanbo Xie, Yingjie Zhang, Yulin Li, Shouyou Song, Xiaokun Chen, Zhihan Liu, **Liya Su**, Tingwen Liu. **Detecting RAG Extraction Attack via Dual-Path Runtime Integrity Game**. ACL 2026. [paper]({{ base_path }}/publication/2026-07-01-paper-CanaryRAG)
+2. Xiaoyi Chen, Haoyuan Wang, Siyuan Tang, Sijia Liu, **Liya Su**, XiaoFeng Wang, Haixu Tang. **Old Memories Die Hard: Unveiling Shallow Forgetting and Ripple Effects in Privacy Unlearning**. EMNLP 2026. [paper]({{ base_path }}/publication/2026-paper-Old-Memories-Die-Hard)
+3. **Liya Su**, Xinyue Shen, Xiangyu Du, Xiaojing Liao, XiaoFeng Wang, Luyi Xing, Baoxu Liu. **Evil Under the Sun: Understanding and Discovering Attacks on Ethereum Decentralized Applications**. USENIX Security 2021. **(CCF-A)** [paper](https://www.usenix.org/conference/usenixsecurity21/presentation/su)
+4. Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, **Liya Su**, XiaoFeng Wang, Haixu Tang. **The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks**. Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security (CCS 2024). [paper](https://arxiv.org/abs/2311.16189)
+5. **Liya Su**, Yepeng Yao, Chen Zhang, Zhigang Lu, Baoxu Liu. **Marrying Graph Kernel with Deep Neural Network: A Case Study for Network Anomaly Detection**. ICCS 2019: 102-115.
+6. **Liya Su**, Yepeng Yao, Zhigang Lu, Baoxu Liu. **Understanding the Influence of Graph Kernels on Deep Learning Architecture**. TrustCom 2019: 312-318. **(CCF-C)**
+7. **Liya Su**, Yepeng Yao, Ning Li, Junrong Liu, Zhigang Lu, Baoxu Liu. **Hierarchical Clustering Based Network Traffic Data Reduction for Improving Suspicious Flow Detection**. TrustCom 2018: 744-753. **(CCF-C)**
 
 Full list on [Google Scholar](https://scholar.google.com/citations?user=1ebmfU4AAAAJ).
 
 
 ## Awards & Honors
 
+* 2026: Third Prize in the Science and Technology Progress category of the CCF Science and Technology Achievement Awards, for “Research and Application of Key Technologies for Web Application Protection Based on Intelligent Semantic Analysis.”
+* 2026: 1st Place in AI Agent Malicious Operation Behavior Detection at the AI Technology-Empowered Cybersecurity Application Testing Event.
+* 2026: Second Prize in the China Cybersecurity Innovation and Entrepreneurship Competition, for the Chaitin ShouYuan AI Security Protection Solution.
 * 2025: 1st Place, Tencent Cloud AI Agent CTF Competition (China's first AI autonomous penetration challenge)
 * 2025: 1st Place, Beijing CAC AI Content Security Protection Competition
 * 2024: 1st Place, National Cybersecurity AI Capability Competition (guided by CAC)
@@ -89,7 +93,6 @@ Hi，我是苏莉娅 — 目前在长亭科技担任AI安全研发专家，主�
 * 2026年：CCF科技成果奖科技进步三等奖：基于智能语义分析的Web应用防护关键技术研究及应用。
 * 2026年：人工智能技术赋能网络安全应用测试活动：AI智能体恶意操作行为检测第一名。
 * 2026年：中国网络安全创新创业大赛：长亭守元人工智能安全防护解决方案二等奖。
-
 * 2025年：腾讯云AI智能体CTF夺旗比赛（国内首个AI智能渗透挑战赛）第一名。
 * 2025年：北京网信办AI内容安全防护比赛第一名。
 * 2025年10月：加入长亭科技，担任AI安全研发专家。
@@ -115,17 +118,22 @@ Hi，我是苏莉娅 — 目前在长亭科技担任AI安全研发专家，主�
 
 ## 代表论文
 
-1. **Liya Su**, Xinyue Shen, Xiangyu Du, Xiaojing Liao, XiaoFeng Wang, Luyi Xing, Baoxu Liu. **Evil Under the Sun: Understanding and Discovering Attacks on Ethereum Decentralized Applications**. USENIX Security 2021. **(CCF-A)** [论文](https://www.usenix.org/conference/usenixsecurity21/presentation/su)
-2. Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, **Liya Su**, XiaoFeng Wang, Haixu Tang. **The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks**. arXiv 2023. [论文](https://arxiv.org/abs/2311.16189)
-3. **Liya Su**, Yepeng Yao, Chen Zhang, Zhigang Lu, Baoxu Liu. **Marrying Graph Kernel with Deep Neural Network: A Case Study for Network Anomaly Detection**. ICCS 2019: 102-115.
-4. **Liya Su**, Yepeng Yao, Zhigang Lu, Baoxu Liu. **Understanding the Influence of Graph Kernels on Deep Learning Architecture**. TrustCom 2019: 312-318. **(CCF-C)**
-5. **Liya Su**, Yepeng Yao, Ning Li, Junrong Liu, Zhigang Lu, Baoxu Liu. **Hierarchical Clustering Based Network Traffic Data Reduction for Improving Suspicious Flow Detection**. TrustCom 2018: 744-753. **(CCF-C)**
+1. Yuanbo Xie, Yingjie Zhang, Yulin Li, Shouyou Song, Xiaokun Chen, Zhihan Liu, **Liya Su**, Tingwen Liu. **Detecting RAG Extraction Attack via Dual-Path Runtime Integrity Game**. ACL 2026. [论文]({{ base_path }}/publication/2026-07-01-paper-CanaryRAG)
+2. Xiaoyi Chen, Haoyuan Wang, Siyuan Tang, Sijia Liu, **Liya Su**, XiaoFeng Wang, Haixu Tang. **Old Memories Die Hard: Unveiling Shallow Forgetting and Ripple Effects in Privacy Unlearning**. EMNLP 2026. [论文]({{ base_path }}/publication/2026-paper-Old-Memories-Die-Hard)
+3. **Liya Su**, Xinyue Shen, Xiangyu Du, Xiaojing Liao, XiaoFeng Wang, Luyi Xing, Baoxu Liu. **Evil Under the Sun: Understanding and Discovering Attacks on Ethereum Decentralized Applications**. USENIX Security 2021. **(CCF-A)** [论文](https://www.usenix.org/conference/usenixsecurity21/presentation/su)
+4. Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, **Liya Su**, XiaoFeng Wang, Haixu Tang. **The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks**. Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security (CCS 2024). [论文](https://arxiv.org/abs/2311.16189)
+5. **Liya Su**, Yepeng Yao, Chen Zhang, Zhigang Lu, Baoxu Liu. **Marrying Graph Kernel with Deep Neural Network: A Case Study for Network Anomaly Detection**. ICCS 2019: 102-115.
+6. **Liya Su**, Yepeng Yao, Zhigang Lu, Baoxu Liu. **Understanding the Influence of Graph Kernels on Deep Learning Architecture**. TrustCom 2019: 312-318. **(CCF-C)**
+7. **Liya Su**, Yepeng Yao, Ning Li, Junrong Liu, Zhigang Lu, Baoxu Liu. **Hierarchical Clustering Based Network Traffic Data Reduction for Improving Suspicious Flow Detection**. TrustCom 2018: 744-753. **(CCF-C)**
 
 完整列表见 [Google Scholar](https://scholar.google.com/citations?user=1ebmfU4AAAAJ)。
 
 
 ## 荣誉奖项
 
+* 2026年：CCF科技成果奖科技进步三等奖：基于智能语义分析的Web应用防护关键技术研究及应用。
+* 2026年：人工智能技术赋能网络安全应用测试活动：AI智能体恶意操作行为检测第一名。
+* 2026年：中国网络安全创新创业大赛：长亭守元人工智能安全防护解决方案二等奖。
 * 2025年：腾讯云AI智能体CTF夺旗比赛（国内首个AI智能渗透挑战赛）第一名
 * 2025年：北京网信办AI内容安全防护比赛第一名
 * 2024年：中央网信办指导的网络安全AI能力邀请赛全国第一名
