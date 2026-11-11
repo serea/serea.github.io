@@ -55,7 +55,7 @@ a.lang-switch:hover {
 </style>
 <script>
 (function() {
-  // Explicit language links override a previously saved preference.
+  /* Explicit language links override a previously saved preference. */
   var requestedLang = new URLSearchParams(window.location.search).get('lang');
   var savedLang;
   try { savedLang = localStorage.getItem('site-lang'); } catch (e) {}
