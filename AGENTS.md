@@ -17,7 +17,8 @@
 - 提交前运行 `git diff --check`、`python3 scripts/check_bilingual.py`。
 - 构建后运行 `python3 scripts/check_bilingual.py --site _site`；部署工作流也运行此检查，防止双语条目缺失。
 - 检查 `/?lang=en` 与 `/?lang=zh`，确认对应内容属于正确语言区块、语言切换正常，不能只对整个 HTML 搜索关键词就宣布双语验证通过。
-- 修改语言脚本时运行 `node scripts/check_language.js`；构建后运行 `node scripts/check_language.js _site/index.html`。必须测试压缩后的实际脚本、按钮文案及双向切换，不能只测未压缩源码。内联 JavaScript 禁止使用 `//` 单行注释，HTML 压缩会吞掉换行；使用 `/* ... */`。
+- 语言切换使用独立 `assets/js/language.js` 和原生按钮。运行 `node scripts/check_language.js _site/index.html` 检查接线，并运行 `cd ci/browser && npm test` 真实浏览器测试；必须覆盖桌面/手机点击、键盘、跨页、刷新及禁用存储。不得以模拟 DOM 测试替代真实点击。
+- 发布必须通过 `.github/workflows/pages.yml` 的浏览器和安全门禁。不得删除/忽略失败检查或漏洞结果来发布；安全扫描是有限规则与已知漏洞检查，不能宣称代码绝对安全。
 - 线上内容已存在但用户未看到时，先调查语言偏好、渲染和缓存；没有证据不得宣称根因已确定。
 
 ## 发布与改动范围 / Delivery

@@ -1,50 +1,98 @@
-name: Deploy Jekyll site to Pages
+name: Validate and deploy Pages
 
 on:
+  pull_request:
   push:
-    branches: ["master"]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  build:
+  security:
+    name: Security checks
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - uses: actions/checkout@v4
         with:
-          ruby-version: '3.1'
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts
+      - run: npm audit --audit-level=high
+      - run: npm ci --prefix ci/browser --ignore-scripts
+      - run: npm audit --prefix ci/browser --audit-level=high
+      - run: npm ci --prefix ci/security --ignore-scripts
+      - run: npm audit --prefix ci/security --audit-level=high
+      - run: python3 scripts/check_security.py
+      - name: Scan shipped browser libraries
+        run: ci/security/node_modules/.bin/retire --path assets/js --severity high --exitwith 1
+
+  build:
+    name: Build and browser tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
           bundler-cache: true
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+      - name: Save resolved Ruby lockfile
+        uses: actions/upload-artifact@v4
+        with:
+          name: ruby-lockfile
+          path: Gemfile.lock
+      - name: Audit Ruby dependencies
+        run: |
+          gem install bundler-audit -v 0.9.3 --no-document
+          bundler-audit check --update
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build production site
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
-      - name: Check bilingual source and rendered homepage
-        run: python3 scripts/check_bilingual.py --site _site
-      - name: Check rendered language-switch script
-        run: node scripts/check_language.js _site/index.html
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - run: python3 scripts/check_bilingual.py --site _site
+      - run: node scripts/check_language.js _site/index.html
+      - run: npm ci --prefix ci/browser --ignore-scripts
+      - name: Install browser
+        working-directory: ci/browser
+        run: npx playwright install --with-deps chromium
+      - name: Test actual rendered buttons and navigation
+        working-directory: ci/browser
+        run: npm test
+      - name: Upload browser failure evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-failures
+          path: |
+            ci/browser/playwright-report/
+            ci/browser/test-results/
+          retention-days: 7
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
 
   deploy:
+    name: Deploy verified site
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    needs: [build, security]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

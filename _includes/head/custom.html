@@ -40,53 +40,22 @@
 html.zh .lang-en { display: none !important; }
 html.zh .lang-zh { display: inline !important; }
 html.zh div.lang-zh { display: block !important; }
-a.lang-switch {
-  border: 1px solid #999 !important;
-  border-radius: 3px !important;
-  padding: 2px 8px !important;
-  font-size: 0.75em !important;
-  margin-left: 0.5rem !important;
+ .masthead__menu { display: flex; align-items: center; gap: 0.75rem; }
+.masthead__menu .greedy-nav { flex: 1; min-width: 0; }
+button.lang-switch {
+  flex: 0 0 auto;
+  border: 1px solid #777;
+  border-radius: 4px;
+  padding: 0.4rem 0.65rem;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8em;
   cursor: pointer;
 }
-a.lang-switch:hover {
-  background: rgba(0,0,0,0.05);
-  text-decoration: none !important;
-}
+button.lang-switch:focus-visible { outline: 2px solid #267cb9; outline-offset: 3px; }
 </style>
-<script>
-(function() {
-  /* Explicit language links override a previously saved preference. */
-  var requestedLang = new URLSearchParams(window.location.search).get('lang');
-  var savedLang;
-  try { savedLang = localStorage.getItem('site-lang'); } catch (e) {}
-  var lang = requestedLang === 'en' || requestedLang === 'zh'
-    ? requestedLang : (savedLang === 'zh' ? 'zh' : 'en');
-  document.documentElement.classList.toggle('zh', lang === 'zh');
-  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-  window.toggleLang = function() {
-    var isZh = document.documentElement.classList.toggle('zh');
-    lang = isZh ? 'zh' : 'en';
-    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
-    try { localStorage.setItem('site-lang', lang); } catch (e) {}
-    var url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-    window.history.replaceState(null, '', url);
-    var btn = document.getElementById('lang-btn');
-    if (btn) btn.textContent = isZh ? 'EN' : '中文';
-    document.querySelectorAll('[data-zh]').forEach(function(el) {
-      el.textContent = isZh ? el.getAttribute('data-zh') : el.getAttribute('data-en');
-    });
-  };
-  document.addEventListener('DOMContentLoaded', function() {
-    if (lang === 'zh') {
-      var btn = document.getElementById('lang-btn');
-      if (btn) btn.textContent = 'EN';
-      document.querySelectorAll('[data-zh]').forEach(function(el) {
-        el.textContent = el.getAttribute('data-zh');
-      });
-    }
-  });
-})();
-</script>
+<script src="{{ base_path }}/assets/js/language.js?v=2"></script>
 
 <!-- end custom head snippets -->
