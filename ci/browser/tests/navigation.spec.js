@@ -1,5 +1,12 @@
 const { test, expect } = require('@playwright/test');
 
+test.beforeEach(async ({ page, baseURL }) => {
+  await page.route('https://serea.github.io/**', route => {
+    if (new URL(baseURL).hostname !== 'serea.github.io') return route.abort('blockedbyclient');
+    return route.continue();
+  });
+});
+
 async function language(page, value, homepage = false) {
   await expect(page.locator('html')).toHaveAttribute('lang', value === 'zh' ? 'zh-CN' : 'en');
   await expect(page.locator('#lang-btn')).toBeVisible();
