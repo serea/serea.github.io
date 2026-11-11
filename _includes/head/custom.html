@@ -39,6 +39,7 @@
 .lang-zh { display: none; }
 html.zh .lang-en { display: none !important; }
 html.zh .lang-zh { display: inline !important; }
+html.zh div.lang-zh { display: block !important; }
 a.lang-switch {
   border: 1px solid #999 !important;
   border-radius: 3px !important;
@@ -54,13 +55,22 @@ a.lang-switch:hover {
 </style>
 <script>
 (function() {
-  var lang = localStorage.getItem('site-lang') || 'en';
-  if (lang === 'zh') {
-    document.documentElement.classList.add('zh');
-  }
+  // Explicit language links override a previously saved preference.
+  var requestedLang = new URLSearchParams(window.location.search).get('lang');
+  var savedLang;
+  try { savedLang = localStorage.getItem('site-lang'); } catch (e) {}
+  var lang = requestedLang === 'en' || requestedLang === 'zh'
+    ? requestedLang : (savedLang === 'zh' ? 'zh' : 'en');
+  document.documentElement.classList.toggle('zh', lang === 'zh');
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
   window.toggleLang = function() {
     var isZh = document.documentElement.classList.toggle('zh');
-    localStorage.setItem('site-lang', isZh ? 'zh' : 'en');
+    lang = isZh ? 'zh' : 'en';
+    document.documentElement.lang = isZh ? 'zh-CN' : 'en';
+    try { localStorage.setItem('site-lang', lang); } catch (e) {}
+    var url = new URL(window.location.href);
+    url.searchParams.set('lang', lang);
+    window.history.replaceState(null, '', url);
     var btn = document.getElementById('lang-btn');
     if (btn) btn.textContent = isZh ? 'EN' : '中文';
     document.querySelectorAll('[data-zh]').forEach(function(el) {

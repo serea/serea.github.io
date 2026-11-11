@@ -3,14 +3,15 @@ title: "The Janus Interface: How Fine-Tuning in Large Language Models Amplifies 
 collection: publications
 permalink: /publication/2023-11-27-paper-Janus
 date: 2023-11-27
-venue: 'arXiv'
+publication_year: 2024
+venue: 'Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security (CCS 2024)'
 paperurl: 'https://arxiv.org/abs/2311.16189'
-citation: 'Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, Liya Su, XiaoFeng Wang, Haixu Tang. The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks. arXiv 2023.'
+citation: 'Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, Liya Su, XiaoFeng Wang, Haixu Tang. The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks. Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security (CCS 2024).'
 ---
 
 [Download paper here](https://arxiv.org/abs/2311.16189)
 
-Recommended citation: Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, Liya Su, XiaoFeng Wang, Haixu Tang. The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks. arXiv 2023.
+Recommended citation: Xiaoyi Chen, Siyuan Tang, Rui Zhu, Shijun Yan, Lei Jin, Zihao Wang, Liya Su, XiaoFeng Wang, Haixu Tang. The Janus Interface: How Fine-Tuning in Large Language Models Amplifies the Privacy Risks. Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security (CCS 2024).
 
 ## Abstract
 

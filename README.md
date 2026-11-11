@@ -3,6 +3,12 @@ This is my personal github page repository. This was forked by [academic website
 
 ### Note: if you are using this repo and now get a notification about a security vulnerability, delete the Gemfile.lock file. 
 
+## AI 使用说明 / AI Contributor Instructions
+
+AI 修改本项目之前必须阅读 [AGENTS.md](AGENTS.md)。个人主页的中文与英文必须在同一 PR 中同步更新，论文须同步主页列表及详情。提交前运行 `python3 scripts/check_bilingual.py`；构建后运行 `python3 scripts/check_bilingual.py --site _site`。
+
+AI contributors must follow [AGENTS.md](AGENTS.md): update both languages together and verify the source, rendered pages, and deployment.
+
 # Instructions
 
 1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
