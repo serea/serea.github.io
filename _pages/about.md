@@ -18,6 +18,10 @@ Before this, I was a Security Algorithm Engineer at JD Cloud. I got my Ph.D. in 
 
 ## What's New
 
+* 2026: Third Prize in the Science and Technology Progress category of the CCF Science and Technology Achievement Awards, for “Research and Application of Key Technologies for Web Application Protection Based on Intelligent Semantic Analysis.”
+* 2026: 1st Place in AI Agent Malicious Operation Behavior Detection at the AI Technology-Empowered Cybersecurity Application Testing Event.
+* 2026: Second Prize in the China Cybersecurity Innovation and Entrepreneurship Competition, for the Chaitin ShouYuan AI Security Protection Solution.
+
 * 2025: 1st Place in Tencent Cloud AI Agent CTF Competition (China's first AI autonomous penetration challenge).
 * 2025: 1st Place in Beijing CAC AI Content Security Protection Competition.
 * 2025: Joined Chaitin Technology as AI Security R&D Expert, Oct 2025.
@@ -81,6 +85,10 @@ Hi，我是苏莉娅 — 目前在长亭科技担任AI安全研发专家，主�
 ---
 
 ## 最新动态
+
+* 2026年：CCF科技成果奖科技进步三等奖：基于智能语义分析的Web应用防护关键技术研究及应用。
+* 2026年：人工智能技术赋能网络安全应用测试活动：AI智能体恶意操作行为检测第一名。
+* 2026年：中国网络安全创新创业大赛：长亭守元人工智能安全防护解决方案二等奖。
 
 * 2025年：腾讯云AI智能体CTF夺旗比赛（国内首个AI智能渗透挑战赛）第一名。
 * 2025年：北京网信办AI内容安全防护比赛第一名。
